@@ -40,18 +40,26 @@ class Box{
    
     
 
-    else{
+    else {
         
         World.remove(myworld, this.body)
         push();
+       
         this.visibility = this.visibility -5;
-        tint(255,this.visibility);
-        fill(this.color);
-        //rect(this.body.position.x,this.body.position.y,this.width,this.height)
+        
         pop();
     }
     
     
     }
 
+
+    score(){
+if(this.visibility<0 && this.visibility> -105){
+
+    score ++
+}
+
+
+    }
 }

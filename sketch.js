@@ -5,10 +5,11 @@ const Constraint = Matter.Constraint
 
 
 var b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
-
+var bg = "white"
 var base1, floor
 var poly;
 var myworld, myengine;
+var score =0
 
 function preload(){
 poly = loadImage("polygon.png");
@@ -31,7 +32,7 @@ friction: 1,
 restitution:0.8
 
 }
-hexagon = Bodies.circle (50,200,40)
+hexagon = Bodies.circle (50,200,40,options)
 World.add(myworld,hexagon);
 console.log(hexagon)
 console.log(hexagon.position.x)
@@ -68,7 +69,12 @@ Engine.run(myengine)
 }
 
 function draw(){
-background(0)
+    getbgimage()
+background(bg)
+    
+textSize(30)
+fill("white")
+text("SCORE : "+ score, width -300,50)
 
 
 base1.display();
@@ -89,6 +95,24 @@ b13.display();
 b14.display();
 b15.display();
 b16.display();
+
+
+b1.score()
+b2.score()
+b3.score()
+b4.score()
+b5.score()
+b6.score()
+b7.score()
+b8.score()
+b9.score()
+b10.score()
+b11.score()
+b12.score()
+b13.score()
+b14.score()
+b15.score()
+b16.score()
 
 imageMode(CENTER);
 image(poly,hexagon.position.x, hexagon.position.y,80,80);
@@ -113,4 +137,29 @@ function keyPressed(){
 
     sling.attach(hexagon);
     }
+}
+
+
+async function getbgimage(){
+
+var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata")
+var responseJSON = await response.json()
+
+var datetime = responseJSON.datetime
+
+var hour = datetime.slice(11,13)
+
+
+if (hour>=6 && hour <=16){
+
+    bg = "blue"
+}
+
+else{
+
+    bg = "black"
+}
+
+console.log(bg)
+
 }
