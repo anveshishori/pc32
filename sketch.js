@@ -5,7 +5,7 @@ const Constraint = Matter.Constraint
 
 
 var b1,b2,b3,b4,b5,b6,b7,b8,b9,b10,b11,b12;
-var bg = "white"
+var bg = "lightblue"
 var base1, floor
 var poly;
 var myworld, myengine;
